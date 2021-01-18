@@ -3,6 +3,7 @@ const client = new Discord.Client();
 const common = new require('./common.js');
 const config = new require('./config.js');
 const prefix = config.prefix;
+const log = require('log-to-file');
 
 // Initial setup info
 client.on('ready', () => {
@@ -79,7 +80,9 @@ client.on('message', msg => {
         }
 });
 
-console.log("Bot token: " + process.env.BOT_TOKEN);
+client.on('error', error => {
+        console.error('There was an error:', error);
+});
 
 if (process.env.BOT_TOKEN) {
         client.login(process.env.BOT_TOKEN);
