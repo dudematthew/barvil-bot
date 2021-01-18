@@ -4,7 +4,7 @@
   "description": "Simple Discord bot made to imitate some well known friend.",
   "main": "index.js",
   "scripts": {
-    "start": "pm2 start index.js",
+    "start": "node index.js",
     "ls": "pm2 list"
   },
   "repository": {
