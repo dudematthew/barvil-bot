@@ -79,6 +79,8 @@ client.on('message', msg => {
         }
 });
 
+console.log("Bot token: " + process.env.BOT_TOKEN);
+
 if (process.env.BOT_TOKEN) {
         client.login(process.env.BOT_TOKEN);
 }
