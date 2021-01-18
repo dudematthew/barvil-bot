@@ -4,7 +4,8 @@
   "description": "Simple Discord bot made to imitate some well known friend.",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "pm2 start index.js",
+    "ls": "pm2 list"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,10 @@
   "homepage": "https://github.com/dudematthew/barvil-bot#readme",
   "dependencies": {
     "discord.js": "^12.5.1",
-    "log-to-file": "^2.0.2"
+    "log-to-file": "^2.0.2",
+    "pm2": "^4.5.1"
+  },
+  "devDependencies": {
+    "semantic-release": "^17.3.3"
   }
 }
