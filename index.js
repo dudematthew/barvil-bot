@@ -2,8 +2,6 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const common = new require('./common.js');
 const config = new require('./config.js');
-const tokens = new require('./token.js');
-const token = tokens.token;
 const prefix = config.prefix;
 
 // Initial setup info
@@ -81,4 +79,11 @@ client.on('message', msg => {
         }
 });
 
-client.login(token);
+if (process.env.BOT_TOKEN) {
+        client.login(process.env.BOT_TOKEN);
+}
+else {
+        const tokens = new require('./token.js');
+        const token = tokens.token;
+        client.login(token);
+}
