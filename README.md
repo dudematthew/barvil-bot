@@ -1,2 +1,2 @@
 ﻿# barvil-bot
-Simple Discord bot made to imitate some well known friend.
+Simple Discord bot made to imitate a well known friend.
