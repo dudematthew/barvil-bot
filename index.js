@@ -33,6 +33,7 @@ client.on('message', msg => {
         // Prevent null message
         if (msg.member === null) return;
 
+        // Initial variables
         const guild = msg.guild;
         const channels = {
                 announcements: guild.channels.cache.get(config.channelIds.announcements),
