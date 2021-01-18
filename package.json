@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/dudematthew/barvil-bot#readme",
   "dependencies": {
-    "discord.js": "^12.5.1"
+    "discord.js": "^12.5.1",
+    "log-to-file": "^2.0.2"
   }
 }
