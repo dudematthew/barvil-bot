@@ -1,0 +1,27 @@
+{
+  "name": "barvil-bot",
+  "version": "1.0.0",
+  "description": "Simple Discord bot made to imitate some well known friend.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dudematthew/barvil-bot.git"
+  },
+  "keywords": [
+    "barvil",
+    "discord",
+    "bot"
+  ],
+  "author": "dudematthew",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dudematthew/barvil-bot/issues"
+  },
+  "homepage": "https://github.com/dudematthew/barvil-bot#readme",
+  "dependencies": {
+    "discord.js": "^12.5.1"
+  }
+}
