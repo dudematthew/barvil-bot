@@ -56,6 +56,8 @@ client.on('ready', () => {
 		if (currentTime - lastMessageTime > "72000000") {
 			message = Common.randomValue(config.longInactivityAnswers);
 			channels.general.send(message);
+			lastMessageTime = new Date();
+			db.push("time/lastmessagetime", lastMessageTime);
 		}
 	});
 
