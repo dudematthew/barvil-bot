@@ -46,11 +46,6 @@ const Config = {
                 "#ping co to za ogłoszenie??",
                 "#przeczytałem ogłoszenie... wytłumaczysz mi o co chodzi??"
         ],
-        mentionAnswers: [
-                "sorry ale ja nie rozmawiam z takimi...",
-                "przepraszam, ale nie odpowiadam na wypowiedzi, które mają mniej IQ niż moje.",
-                "wróć jak zmądrzejesz."
-        ],
         longInactivityAnswers: [
                 "To co.. serwer jednak nie wystartuje?",
                 "Coś nikt tutaj nie pisze... mam nadzieję że serwer nie jest martwy...",
@@ -62,11 +57,11 @@ const Config = {
                 "To fajny Admin, że przeklina... Co reszta administracji ma na ten temat do powiedzenia?"
         ],
         curseAnswers: [
-                'Aha? #ping?',
-                '#ping',
-                '#ping, możesz tutaj zerknąć jak coś...',
-                'eee... ok? #ping',
-                '#ping kolejny przeklina...'
+                'Aha? <@426330456753963008>?',
+                '<@426330456753963008>',
+                '<@426330456753963008>, możesz tutaj zerknąć jak coś...',
+                'eee... ok? <@426330456753963008>',
+                '<@426330456753963008> kolejny przeklina...'
         ],
         curses: ['chuj','chuja', 'chujek', 'chuju', 'chujem', 'chujnia',
                 'chujowy', 'chujowa', 'chujowe', 'cipa', 'cipę', 'cipe', 'cipą',
