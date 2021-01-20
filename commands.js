@@ -139,14 +139,16 @@ export default class Commands {
 
                         case "test":
                             this.db.testChannelId = args[1];
-                            this.msg.channel.send("Ustawiono kanał `" + channel.name + "` na kanał testowyyy");
+                            this.msg.channel.send("Ustawiono kanał `" + channel.name + "` na kanał testowy");
                             break;
                     
                         default:
                             break;
                     }
-                } else
+                } 
+                else
                     this.msg.channel.send("Nie ma takiego kanału...");
+
             } else {
                 let helpEmbed = new Discord.MessageEmbed()
                 .setColor("#ffffff")
@@ -167,6 +169,46 @@ export default class Commands {
                     false);
 
             this.msg.channel.send(helpEmbed);
+        }
+    }
+
+    channelType (args = []) {
+
+        let testchannel = (channelId) => {
+            let foundChannel = false;
+            for (const property in Config.channelIds) {
+                let currentChannelId = Config.channelIds[property];
+
+                if (currentChannelId == channelId) {
+                    foundChannel = property;
+                };
+            }
+
+            if (foundChannel) {
+                this.msg.channel.send("Ten kanał jest zapisany w mojej bazie jako kanał typu `" + foundChannel + "`");
+            } else {
+                this.msg.channel.send("Ten kanał nie istnieje w mojej bazie...");
+            }
+        };
+
+        if (args[0] && !args[1]) {
+            if (this.msg.guild.channels.cache.get(args[0]) !== undefined) {
+                testchannel(args[0]);
+            } else
+                this.msg.channel.send("Eee... nie ma takiego kanału...");
+        }
+        else if (!args[0]) {
+            testchannel(this.msg.channel.id);
+        }
+        else {
+            let helpEmbed = new Discord.MessageEmbed()
+            .setColor("#ffffff")
+            .addField(
+                "Eee.. nie tak się używa tej komendy...", 
+                Config.commands.channelType.useMethod, 
+                false);
+
+        this.msg.channel.send(helpEmbed);
         }
     }
 }

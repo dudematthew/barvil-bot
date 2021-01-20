@@ -42,7 +42,7 @@ export default class dbModel {
             console.error("There was an error parsing lastMessageTime setter - given lastMessageTime is: " + lastMessageTime);
     }
 
-    get announcementChannelId () {
+    get announcementsChannelId () {
         try {
             return this.db.getData("config/channels/announcement");
         } catch(error) {
@@ -50,8 +50,8 @@ export default class dbModel {
         }
     }
 
-    set announcementChannelId (announcementChannelId) {
-        this.db.push("config/channels/announcements", announcementChannelId);
+    set announcementsChannelId (announcementsChannelId) {
+        this.db.push("config/channels/announcements", announcementsChannelId);
     }
 
     get generalChannelId () {

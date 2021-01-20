@@ -23,6 +23,15 @@ const Config = {
                         description: "Zmienia zapisane ID kanałów, do których mógłbym się odnosić",
                         additionalInfo: "Dostępne kanały do ustawienia: announcements / general / test",
                         useMethod: "*setchannel <nazwa kanału> <id kanału>"
+                },
+                channelType: {
+                        commandString: "channeltype",
+                        aliases: [
+                                'ct'
+                        ],
+                        description: "Pokazuje, jak zapisałem dany kanał",
+                        additionalInfo: "Jeśli wywoła się komendę bez podania id, zostanie użyty kanał na którym wywołano komendę",
+                        useMethod: "*channeltype [id kanału]"
                 }
         },
         images: {

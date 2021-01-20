@@ -45,7 +45,7 @@ client.on('ready', () => {
 
 	// Set channels by id's from config
 	channels = {
-		announcements: guild.channels.cache.get(db.announcementChannelId),
+		announcements: guild.channels.cache.get(db.announcementsChannelId),
 		general: guild.channels.cache.get(db.generalChannelId),
 		test: guild.channels.cache.get(db.testChannelId)
 	};
@@ -115,6 +115,11 @@ client.on('message', msg => {
 	// Setchannel command
 	if (command == Config.commands.setChannel.commandString || Config.commands.setChannel.aliases.includes(command)) {
 		commands.setChannel(args);
+	}
+
+	// Setchannel command
+	if (command == Config.commands.channelType.commandString || Config.commands.channelType.aliases.includes(command)) {
+		commands.channelType(args);
 	}
 });
 
