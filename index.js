@@ -144,13 +144,13 @@ client.on('message', msg => {
 		if (Config.curses.indexOf(element.toLowerCase()) !== -1) {
 			let answerMessage;
 
-			if (!isAdmin) {
+			if (isAdmin) {
 				answerMessage = Common.RandomValue(Config.curseAnswers);
 			}
 			else {
-				answerMessage = Common.RandomValue(Config.adminCurseAnswers).replace("#ping", "<@" + Config.pingUserId + ">");
+				answerMessage = Common.RandomValue(Config.adminCurseAnswers);
 			}
-
+			
 			msg.channel.send(answerMessage);
 		}
 	});
