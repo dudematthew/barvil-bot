@@ -1,7 +1,33 @@
-var config = {
+const Config = {
         prefix: "*",
         pingUserId: "426330456753963008",
         guildId: "697878429978198147",
+        messageInactivityMinutes: 1200,
+        commands: {
+                help: {
+                        commandString: "help",
+                        aliases: [
+                                'pomoc',
+                                'h',
+                                'p'
+                        ],
+                        description: "Wyświetla pomoc dotyczącą różnych rzeczy, które umiem",
+                        additionalInfo: "",
+                        useMethod: "*help [nazwa komendy]"
+                },
+                setChannel: {
+                        commandString: "setchannel",
+                        aliases: [
+                                'sc'
+                        ],
+                        description: "Zmienia zapisane ID kanałów, do których mógłbym się odnosić",
+                        additionalInfo: "Dostępne kanały do ustawienia: announcements / general / test",
+                        useMethod: "*setchannel <nazwa kanału> <id kanału>"
+                }
+        },
+        images: {
+                barvil: "https://i.imgur.com/AFuBlpL.png"
+        },
         channelIds: {
                 announcements: "777293773678968842",
                 general: "714791840452313149",
@@ -160,4 +186,4 @@ var config = {
         ]
 } 
 
-export default config;
+export default Config;
