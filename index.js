@@ -1,25 +1,35 @@
 'esversion: 6';
 
+// https://discord.js.org
 import Discord from 'discord.js';
-import Common from './common.js';
-import config from './config.js';
+
+// https://www.npmjs.com/package/node-json-db
 import { JsonDB } from 'node-json-db';
 import { Config } from 'node-json-db/dist/lib/JsonDBConfig.js';
+
+// https://www.npmjs.com/package/jsonfile
 import jsonfile from "jsonfile";
 
+// Local
+import Common from './common.js';
+import config from './config.js';
+
+// Basic constant vari
 const client = new Discord.Client();
 const prefix = config.prefix;
 const db = new JsonDB(new Config("barvilDB", true, false, '/'));
 
+// Basic vars declaration
 var guild;
 var channels;
 var lastMessageTime;
 
+// Get lastMessageTime from DB or create new
 try {
 	lastMessageTime = new Date(db.getData("time/lastmessagetime"));
 } catch(error) {
 	lastMessageTime = new Date();
-};
+}
 
 // Initial setup info
 client.on('ready', () => {
@@ -30,12 +40,14 @@ client.on('ready', () => {
 	if (!guild) return console.log("Couldn't get the guild.");
 	else console.log("Guild found: " + guild.name);
 
+	// Set channels by id's from config
 	channels = {
 		announcements: guild.channels.cache.get(config.channelIds.announcements),
 		general: guild.channels.cache.get(config.channelIds.general),
 		test: guild.channels.cache.get(config.channelIds.test)
 	};
 
+	// Log channels settings
 	if (!channels.announcements) return console.log("Couldn't get the announcement channel.");
 	else console.log("Announcement channel found: " + channels.announcements.name);
 
@@ -50,11 +62,11 @@ client.on('ready', () => {
 // Automatic timed messages
 client.on('ready', () => {
 
-	Common.loopAction(5000, () => {
+	Common.LoopAction(5000, () => {
 		let currentTime = new Date();
 
 		if (currentTime - lastMessageTime > "72000000") {
-			message = Common.randomValue(config.longInactivityAnswers);
+			message = Common.RandomValue(config.longInactivityAnswers);
 			channels.general.send(message);
 			lastMessageTime = new Date();
 			db.push("time/lastmessagetime", lastMessageTime);
@@ -105,10 +117,10 @@ client.on('message', msg => {
 			let answerMessage;
 
 			if (!isAdmin) {
-				answerMessage = Common.randomValue(config.curseAnswers);
+				answerMessage = Common.RandomValue(config.curseAnswers);
 			}
 			else {
-				answerMessage = Common.randomValue(config.adminCurseAnswers).replace("#ping", "<@" + config.pingUserId + ">");
+				answerMessage = Common.RandomValue(config.adminCurseAnswers).replace("#ping", "<@" + config.pingUserId + ">");
 			}
 
 			msg.channel.send(answerMessage);
@@ -118,7 +130,7 @@ client.on('message', msg => {
 	// Mention reaction
 	if (msg.mentions.has(client.user)) {
 		if (!isAdmin) {
-			let answerMessage = Common.randomValue(config.mentionAnswers);
+			let answerMessage = Common.RandomValue(config.mentionAnswers);
 			msg.reply(answerMessage);
 		}
 		else {
@@ -132,7 +144,7 @@ client.on('message', msg => {
 
 	// Announcement reaction
 	if (guild && msg.channel == channels.announcements) {
-		answerMessage = Common.randomValue(config.announcementsAnswers).replace("#ping", "<@" + senderId + ">");
+		answerMessage = Common.RandomValue(config.announcementsAnswers).replace("#ping", "<@" + senderId + ">");
 		channels.general.send(answerMessage);
 	}
 });

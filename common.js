@@ -1,14 +1,14 @@
 'esversion: 6';
 
 export default class Common {
-        static randomValue (array) {
+        static RandomValue (array) {
                 return array[Math.floor(Math.random() * array.length)];
         }
 
-        static loopAction (time, callback) {
+        static LoopAction (time, callback) {
                 setTimeout(() => {
                         callback();
-                        this.loopAction(time, callback);
+                        this.LoopAction(time, callback);
                 }, time);
         }
 }
