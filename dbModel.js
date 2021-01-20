@@ -7,6 +7,7 @@ import Discord from 'discord.js';
 
 // Local
 import Config from './config.js';
+import Common from './common.js';
 
 export default class dbModel {
     /**
@@ -24,7 +25,7 @@ export default class dbModel {
     get lastMessageTime () {
         let lastMessageTime;
         try {
-            lastMessageTime = new Date(this.db.getData("time/lastmessagetime"));
+            lastMessageTime = new Date(this.db.getData("time/lastMessageTime"));
         } catch(error) {
             lastMessageTime = new Date();
         }
@@ -36,7 +37,7 @@ export default class dbModel {
      */
     set lastMessageTime (lastMessageTime) {
         if (lastMessageTime instanceof Date) {
-            this.db.push("time/lastmessagetime", lastMessageTime);
+            this.db.push("time/lastMessageTime", lastMessageTime);
         }
         else
             console.error("There was an error parsing lastMessageTime setter - given lastMessageTime is: " + lastMessageTime);
@@ -76,5 +77,26 @@ export default class dbModel {
 
     set testChannelId (testChannelId) {
         this.db.push("config/channels/test", testChannelId);
+    }
+
+    /**
+     * @param {String}
+     * @returns {Array}
+     */
+    getUserChatContext (userId) {
+        try {
+            return this.db.getData("chatContexts/" + userId);
+        } catch(error) {
+            return [];
+        }
+    }
+
+    /**
+     * @param {String}
+     * @param {Array}
+     */
+    setUserChatContext (userId, chatContext) {
+        Common.ResizeArray(chatContext, 30);
+        this.db.push("chatContexts/" + userId, chatContext);
     }
 }

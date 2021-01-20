@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "watch": "nodemon index.js"
+    "watch": "nodemon index.js --config nodemon.json"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/dudematthew/barvil-bot#readme",
   "dependencies": {
+    "cleverbot-free": "^1.0.5",
     "discord.js": "^12.5.1",
     "jsonfile": "^6.1.0",
     "node-json-db": "^1.1.0",

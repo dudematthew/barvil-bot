@@ -11,11 +11,14 @@ import Common from './common.js';
 import Config from './config.js';
 import Commands from './commands.js';
 import dbModel from './dbModel.js';
+import cleverbot from "cleverbot-free";
 
 // Basic constant var
 const client = new Discord.Client();
 const prefix = Config.prefix;
 const db = new dbModel("./barvilDB.json", true, false);
+
+
 
 // Basic vars declaration -----------------------
 
@@ -154,17 +157,21 @@ client.on('message', msg => {
 
 	// Mention reaction
 	if (msg.mentions.has(client.user)) {
-		if (!isAdmin) {
-			let answerMessage = Common.RandomValue(Config.mentionAnswers);
-			msg.reply(answerMessage);
-		}
-		else {
-			msg.reply("możemy porozmawiać na tickecie?");
-			setTimeout(() => {
-				msg.channel.send("To ja otworzę...");
-				
-			}, 1500);
-		}
+		
+		// Message beautifying
+		let message = msg.content.replace("<@!" + client.user.id + ">", "");
+		message = message.replace(/\s+/g,' ');
+
+		// Get chat context
+		let userId = msg.author.id;
+		let chatContext = db.getUserChatContext(userId);
+
+		cleverbot(message, chatContext).then(response => {
+			msg.reply(response);
+			chatContext.push(message);
+			chatContext.push(response);
+			db.setUserChatContext(userId, chatContext);
+		});
 	}
 
 	// Announcement reaction
