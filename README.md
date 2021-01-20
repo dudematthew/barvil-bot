@@ -1,2 +1,2 @@
 ﻿# barvil-bot
-Simple Discord bot made to imitate my well known polish friend.
+Simple Discord bot made to imitate my characteristic polish friend.
