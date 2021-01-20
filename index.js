@@ -144,7 +144,7 @@ client.on('message', msg => {
 		if (Config.curses.indexOf(element.toLowerCase()) !== -1) {
 			let answerMessage;
 
-			if (isAdmin) {
+			if (!isAdmin) {
 				answerMessage = Common.RandomValue(Config.curseAnswers);
 			}
 			else {
