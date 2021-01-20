@@ -14,7 +14,7 @@ import jsonfile from "jsonfile";
 import Common from './common.js';
 import config from './config.js';
 
-// Basic constant vari
+// Basic constant var
 const client = new Discord.Client();
 const prefix = config.prefix;
 const db = new JsonDB(new Config("barvilDB", true, false, '/'));
