@@ -1,9 +1,11 @@
-module.exports = {
+var config = {
         prefix: "*",
         pingUserId: "426330456753963008",
+        guildId: "697878429978198147",
         channelIds: {
                 announcements: "777293773678968842",
                 general: "714791840452313149",
+                test: "777283323147583540"
         },
         announcementsAnswers: [
                 "#ping co to za ogłoszenie??",
@@ -13,6 +15,11 @@ module.exports = {
                 "sorry ale ja nie rozmawiam z takimi...",
                 "przepraszam, ale nie odpowiadam na wypowiedzi, które mają mniej IQ niż moje.",
                 "wróć jak zmądrzejesz."
+        ],
+        longInactivityAnswers: [
+                "To co.. serwer jednak nie wystartuje?",
+                "Coś nikt tutaj nie pisze... mam nadzieję że serwer nie jest martwy...",
+                "Hmmmmmm... cicho tu strasznie ostatnio..."
         ],
         adminCurseAnswers: [
                 "Aha, to fajny macie ten serwer jak administratorzy przeklinają...",
@@ -152,3 +159,5 @@ module.exports = {
                 'zjebała', 'zjebala', 'zjebana', 'zjebią', 'zjebali', 'zjeby'
         ]
 } 
+
+export default config;
