@@ -160,7 +160,8 @@ client.on('message', msg => {
 		
 		// Message beautifying
 		let message = msg.content.replace("<@!" + client.user.id + ">", "");
-		message = message.replace(/\s+/g,' ');
+		message.replace(/\s{2,}/g, ' ');
+		message = message.trim();
 
 		// Get chat context
 		let userId = msg.author.id;
@@ -171,6 +172,9 @@ client.on('message', msg => {
 			chatContext.push(message);
 			chatContext.push(response);
 			db.setUserChatContext(userId, chatContext);
+
+			console.log("💬 Użytkownik " + msg.author.username + " napisał do Barvila: '" + message + "', a Barvil odpowiedział: '" + response + "'");
+			console.log("Aktualna historia rozmowy z użytkownikiem " + msg.author.username + ": ", chatContext);
 		});
 	}
 
