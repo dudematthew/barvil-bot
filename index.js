@@ -25,17 +25,17 @@ const db = new dbModel("./barvilDB.json", true, false);
 /**
  * @type {Discord.guild}
  */
-var guild;
+let guild;
 
 /**
  * @type {object}
  */
-var channels;
+let channels;
 
 /**
  * @type {Commands}
  */
-var commands;
+let commands;
 
 // Initial setup info ---------------------------
 client.on('ready', () => {

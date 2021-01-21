@@ -1,6 +1,7 @@
 'esversion: 6';
 
 export default class Common {
+        
         static RandomValue(array) {
                 return array[Math.floor(Math.random() * array.length)];
         }
